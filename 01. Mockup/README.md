@@ -1,4 +1,6 @@
 # Mockup of app
 
-![screenshot](Screenshots\v1.png)
+![screenshot](https://github.com/s-kolbusz/Sleep-Go/blob/mockup/01.%20Mockup/Screenshots/v1.png)
+
+
 
