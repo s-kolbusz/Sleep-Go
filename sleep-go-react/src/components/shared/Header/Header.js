@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navbar, Nav, Form, Button, FormControl} from 'react-bootstrap/';
+import {Link} from 'react-router-dom';
 
 
 const header = () =>{
@@ -7,9 +8,9 @@ const header = () =>{
     <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="#home">SleepGo</Navbar.Brand>
     <Nav className="mr-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
+        <Link to='/'><Nav.Link href="#home">Home</Nav.Link></Link>
+        <Link to='/login'><Nav.Link href="#features">Login</Nav.Link></Link>
+        <Link to='/register'><Nav.Link href="#pricing">Register</Nav.Link></Link>
     </Nav>
     <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
