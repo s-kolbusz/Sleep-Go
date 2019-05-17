@@ -10,6 +10,14 @@ import Content from '../../components/Content/Content';
 import './App.css';
 
 class App extends Component {
+  state = {
+    signedIn: false
+  }
+
+  handleSignIn = () =>{
+    let signedIn = this.state.signedIn;
+    this.setState({signedIn: !signedIn});
+  }
   // constructor(props){
   //   super(props);
   //   this.state = {
@@ -38,7 +46,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header />
+        <Header onClick={this.handleSignIn} signedIn={this.state.signedIn}/>
         <Switch>
           <Route path="/register" component={Register} />
           <Route path='/login' component={Login} />
