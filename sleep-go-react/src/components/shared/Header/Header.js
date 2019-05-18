@@ -16,10 +16,10 @@ const header = (props) =>{
         <Form inline>
             {props.signedIn ? 
             <Link to='/'>
-                <Button onClick={props.onClick} variant='outline-light' className="mr-sm-2">Sign out</Button>
+                <Button onClick={props.onSignOut} variant='outline-light' className="mr-sm-2">Sign out</Button>
             </Link> : 
             <Link to='/login'>
-                <Button onClick={props.onClick} variant='light' className="mr-sm-2">Sign in</Button>
+                <Button onClick={props.onSignIn} variant='light' className="mr-sm-2">Sign in</Button>
             </Link>}
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-danger">Search</Button>
