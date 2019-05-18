@@ -1,9 +1,25 @@
 import React from 'react';
 import {Form, Button, Col} from 'react-bootstrap';
 import classes from './Login.module.css';
+import firebase from '../Firebase/FirebaseAuthConf';
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 const login = (props) => {
+    const uiConfig = {
+        signInFlow: 'popup',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          props.googleAuth,
+          props.fbAuth,
+          props.gitHubAuth,
+          props.emailAuth,
+        ],
+        callbacks:{
+            signInSuccess: () => false
+        }
+    }
     return (
+    
     <div className={classes.Login} >
         <Form>
             <Form.Group controlId="formBasicEmail">
@@ -22,6 +38,7 @@ const login = (props) => {
                 Submit
             </Button>
         </Form>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={props.firebaseAuth} />
     </div>
     );
 };
