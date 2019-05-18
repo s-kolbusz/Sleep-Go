@@ -11,14 +11,33 @@ import './App.css';
 
 
 firebase.initializeApp(fireBaseAuthConf);
+
+
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.userPassword = React.createRef();
+    this.userName = React.createRef();
+  }
   state = {
     signedIn: false
   }
   componentDidMount(){
-    this.handleSignIn();
+    this.onSignIn();
   }
 
+  handleRegisterUser = (email, password) => {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ...
+      setTimeout(10000);
+    })
+    
+  }
 
   onSignIn = () =>{
     firebase.auth().onAuthStateChanged(user => {
@@ -42,7 +61,10 @@ class App extends Component {
       <div className="App">
         <Header onSignIn={this.onSignIn} onSignOut={this.onSignOut} signedIn={this.state.signedIn}/>
         <Switch>
-          <Route path="/register" component={Register} />
+          <Route path="/register" render={(props) => <Register
+          userName={this.userName} 
+          userPassword={this.userPassword} 
+          handleRegister={this.handleRegisterUser} />} />
           <Route path='/login' render={(props) => <Login 
           signedIn={this.state.signedIn}
           firebaseAuth={firebase.auth()}

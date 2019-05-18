@@ -1,7 +1,6 @@
 import React from 'react';
-import {Form, Button, Col} from 'react-bootstrap';
+import {Form, Button} from 'react-bootstrap';
 import classes from './Login.module.css';
-import firebase from '../Firebase/FirebaseAuthConf';
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 const login = (props) => {
