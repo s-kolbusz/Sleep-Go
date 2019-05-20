@@ -13,12 +13,12 @@ const register = (props) => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" _ref={ref => { props.userName = ref }}/>
+                    <Form.Control type="email" placeholder="Enter email" onChange={props.onChangeMail} value={props.userName}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" _ref={ref => { props.userPassword = ref }}/>
+                    <Form.Control type="password" placeholder="Password" onChange={props.onChangePassword} value={props.userPassword}/>
                     </Form.Group>
                 </Form.Row>
 
@@ -51,12 +51,7 @@ const register = (props) => {
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" onClick={() => {
-                    let user = props.userName.value;
-                    let password = props.userPassword.vale;
-
-                    props.handleRegister(user, password);
-                }}>
+                <Button variant="primary" type="submit" onClick={props.handleRegister}>
                     Submit
                 </Button>
             </Form>

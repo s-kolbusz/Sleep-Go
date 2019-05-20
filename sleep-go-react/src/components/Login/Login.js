@@ -14,7 +14,7 @@ const login = (props) => {
           props.emailAuth,
         ],
         callbacks:{
-            signInSuccess: () => false
+            signInSuccessWithAuthResult: () => false
         }
     }
     return (
@@ -25,17 +25,18 @@ const login = (props) => {
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" value={props.userName} onChange={props.onChangeMail}/>
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
+                    {props.error ? props.wrongEmailAndPassword : null}
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" value={props.userPassword} onChange={props.onChangePassword}/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={props.onSignInWithEmailAndPassword}>
                     Submit
                 </Button>
             </Form>
