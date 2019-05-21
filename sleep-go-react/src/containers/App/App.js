@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from '../../components/shared/Header/Header';
 import Footer from '../../components/shared/Footer/Footer';
 import * as firebase from 'firebase';
+import 'firebase/auth'
 import Register from '../../components/Register/Register';
 import Login from '../../components/Login/Login';
 import {Switch, Route} from 'react-router-dom';
@@ -21,7 +22,7 @@ class App extends Component {
     password: ''
   }
   componentDidMount(){
-    this.onSignIn();
+    this.autListener();
   }
 
   onChangeMail = event => {
@@ -32,25 +33,29 @@ class App extends Component {
     this.setState({password: event.target.value});
   }
 
-  onRegisterUser = () => {
-    firebase.auth().createUserWithEmailAndPassword(this.state.name, this.state.password).catch(error => {
+  onRegisterUser = (e) => {
+    e.preventDefault();
+    firebase.auth().createUserWithEmailAndPassword(this.state.name, this.state.password)
+    .then(this.setState({name: '', password: ''}))
+    .catch(error => {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
+      console.log(error.code);
+      console.log(error.message);
     })
 
   }
 
-  onSignIn = () =>{
+  autListener = () =>{
     firebase.auth().onAuthStateChanged(user => {
       this.setState({signedIn: !!user});
     });
   }
-  onSignInWithEmailAndPassword = () =>{
-    firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password).
-    then((firebaseUser) => this.onSignIn()).catch(error => {
+
+  onSignInWithEmailAndPassword = (e) =>{
+    e.preventDefault();
+    firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password)
+    .then(this.setState({name: '', password: ''}))
+    .catch(error => {
 
       // Handle Errors here.
       console.log(error.code);
