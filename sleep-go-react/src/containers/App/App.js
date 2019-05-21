@@ -45,11 +45,12 @@ class App extends Component {
 
   onSignIn = () =>{
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({signedIn: !!user}) ;
+      this.setState({signedIn: !!user});
     });
   }
   onSignInWithEmailAndPassword = () =>{
-    firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password).catch(error => {
+    firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password).
+    then((firebaseUser) => this.onSignIn()).catch(error => {
 
       // Handle Errors here.
       console.log(error.code);
@@ -57,7 +58,7 @@ class App extends Component {
       this.setState({error: true})
       // ...
     })
-    this.onSignIn();
+    
   }
 
   onSignOut = () =>{
