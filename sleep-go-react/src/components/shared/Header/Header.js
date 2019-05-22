@@ -9,6 +9,7 @@ const header = (props) =>{
         <Link to='/'><Navbar.Brand>SleepGo</Navbar.Brand></Link>
         <Nav className="mr-auto">
             <Link to='/' className='nav-link'>Home</Link>
+            <Link to='/objects' className='nav-link'>Objects</Link>
             <Link to='/login' className='nav-link'>Login</Link>
             <Link to='/register' className='nav-link'>Register</Link>
         </Nav>
