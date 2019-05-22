@@ -12,6 +12,7 @@ const login = (props) => {
           props.fbAuth,
           props.gitHubAuth,
           props.emailAuth,
+          props.twitterAuth
         ],
         callbacks:{
             signInSuccessWithAuthResult: () => false
