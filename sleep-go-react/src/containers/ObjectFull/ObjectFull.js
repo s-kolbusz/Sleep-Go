@@ -5,46 +5,46 @@ import classes from './ObjectFull.css';
 
 class ObjectFull extends Component {
     state = {
-        loadedPost: null
+        loadedObject: null
     }
 
     componentDidMount () {
         if ( this.props.match.params.id) {
-            if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
-                axios.get( 'https://jsonplaceholder.typicode.com/posts/' + this.props.match.params.id )
+            if ( !this.state.loadedObject || (this.state.loadedObject && this.state.loadedObject.id !== this.props.id) ) {
+                axios.get( 'https://sleep-go.firebaseio.com/objects.json/' + this.props.match.params.id )
                     .then( response => {
                          console.log(response);
-                        this.setState( { loadedPost: response.data } );
+                        this.setState( { loadedObject: response.data } );
                     } );
             }
         }
     }
 
-    deletePostHandler = () => {
-        axios.delete('https://jsonplaceholder.typicode.com/posts/posts/' + this.props.id)
+    deleteObjectHandler = () => {
+        axios.delete('https://sleep-go.firebaseio.com/objects.json/' + this.props.id)
             .then(response => {
                 console.log(response);
             });
     }
 
     render () {
-        let post = <p style={{ textAlign: 'center' }}>Please select a Post!</p>;
+        let object = <p style={{ textAlign: 'center' }}>Wybierz obiekt</p>;
         if ( this.props.id ) {
-            post = <p style={{ textAlign: 'center' }}>Loading...!</p>;
+            object = <p style={{ textAlign: 'center' }}>Wczytywanie</p>;
         }
-        if ( this.state.loadedPost ) {
-            post = (
+        if ( this.state.loadedObject ) {
+            object = (
                 <div className={classes.ObjectFull}>
-                    <h1>{this.state.loadedPost.title}</h1>
-                    <p>{this.state.loadedPost.body}</p>
+                    <h1>{this.state.loadedObject.title}</h1>
+                    <p>{this.state.loadedObject.body}</p>
                     <div className={classes.Edit}>
-                        <button onClick={this.deletePostHandler} className={classes.Delete}>Delete</button>
+                        <button onClick={this.deleteObjectHandler} className={classes.Delete}>Usuń</button>
                     </div>
                 </div>
 
             );
         }
-        return post;
+        return object;
     }
 }
 

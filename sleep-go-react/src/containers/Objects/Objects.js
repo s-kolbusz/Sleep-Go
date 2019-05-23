@@ -8,21 +8,20 @@ import classes from './Objects.module.css';
 class Objects extends Component {
 
     state = {
-        posts: []
+        objects: []
     }
 
     componentDidMount() {
         console.log(this.props);
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
-                const posts = response.data;
-                const updatedPosts = posts.map(post => {
+                const objects = response.data;
+                const updatedObjects = objects.map(object => {
                     return {
-                        ...post,
-                        author: 'Max'
+                        ...object
                     }
                 });
-                this.setState({ posts: updatedPosts });
+                this.setState({ objects: updatedObjects });
                 // console.log( response );
             })
             .catch(error => {
@@ -31,28 +30,30 @@ class Objects extends Component {
             });
     }
 
-    postSelectedHandler = (id) => {
-        this.setState({ selectedPostId: id });
+    objectSelectedHandler = (id) => {
+        this.setState({ selectedObjectId: id });
     }
 
     render () {
-        let posts = <p style={{ textAlign: 'center' }}>Something went wrong!</p>;
+        let objects = <p style={{ textAlign: 'center' }}>Something went wrong!</p>;
         if (!this.state.error) {
-            posts = this.state.posts.map(post => {
+            objects = this.state.objects.map(object => {
                 return (
-                <Link to={'/objects/' + post.id} key={post.id}>
+                <Link to={'/objects/' + object.id} key={object.id}>
                     <Object              
-                        title={post.title}
-                        author={post.author}
+                        name={object.name}
+                        city={object.city}
+                        phone={object.phone}
+                        description={object.description}
                         match={this.props.match}
-                        clicked={() => this.postSelectedHandler(post.id)} />
+                        clicked={() => this.objectSelectedHandler(object.id)} />
                 </Link>);
             });
         }
 
         return (
             <section className={classes.Objects}>
-                {posts}
+                {objects}
             </section>
         );
     }
