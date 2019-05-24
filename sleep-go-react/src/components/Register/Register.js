@@ -2,6 +2,9 @@ import React from 'react';
 import {Form, Button, Col} from 'react-bootstrap';
 import classes from './Register.module.css';
 
+
+
+
 const register = (props) => {
     return(
     <React.Fragment>
@@ -10,12 +13,12 @@ const register = (props) => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" onChange={props.onChangeMail} value={props.userName}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" onChange={props.onChangePassword} value={props.userPassword}/>
                     </Form.Group>
                 </Form.Row>
 
@@ -48,7 +51,7 @@ const register = (props) => {
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" onClick={props.handleRegisterUser}>
+                <Button variant="primary" type="submit" onClick={props.handleRegister}>
                     Submit
                 </Button>
             </Form>

@@ -4,14 +4,13 @@ import {Link} from 'react-router-dom';
 
 
 const header = (props) =>{
-    let signedIn = props.signedIn;
     return(
         <Navbar bg="dark" variant="dark">
         <Link to='/'><Navbar.Brand>SleepGo</Navbar.Brand></Link>
         <Nav className="mr-auto">
-            <Link to='/'><Nav.Link href="#home">Home</Nav.Link></Link>
-            <Link to='/login'><Nav.Link href="#login">Login</Nav.Link></Link>
-            <Link to='/register'><Nav.Link href="#register">Register</Nav.Link></Link>
+            <Link to='/' className='nav-link'>Home</Link>
+            <Link to='/login' className='nav-link'>Login</Link>
+            <Link to='/register' className='nav-link'>Register</Link>
         </Nav>
         <Form inline>
             {props.signedIn ? 

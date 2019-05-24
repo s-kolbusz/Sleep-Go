@@ -1,6 +1,3 @@
-import * as firebase from 'firebase';
-import "firebase/auth";
-import "firebase/firestore";
 
 const fireBaseAuthConf = {
      // Your web app's Firebase configuration
