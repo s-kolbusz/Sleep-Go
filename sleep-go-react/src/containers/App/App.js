@@ -13,6 +13,7 @@ import './App.css';
 import ObjectFull from '../../containers/ObjectFull/ObjectFull';
 
 
+
 firebase.initializeApp(fireBaseAuthConf);
 
 
@@ -21,10 +22,20 @@ class App extends Component {
     error: false,
     signedIn: false,
     name: '',
-    password: ''
+    password: '',
+    registerName: '',
+    registerPassword: ''
   }
   componentDidMount() {
     this.autListener();
+  }
+
+  onChangeRegisterMail = event => {
+    this.setState({ registerName: event.target.value });
+  }
+
+  onChangeRegisterPassword = event => {
+    this.setState({ registerPassword: event.target.value });
   }
 
   onChangeMail = event => {
@@ -40,9 +51,11 @@ class App extends Component {
     firebase.auth().createUserWithEmailAndPassword(this.state.name, this.state.password)
       .then(this.setState({ name: '', password: '' }))
       .catch(error => {
-        // Handle Errors here.
-        console.log(error.code);
-        console.log(error.message);
+        if (error.code === 'auth/weak-password') {
+          alert('The password is too weak.');
+        } else {
+          alert(error.message);
+        }
       })
 
   }
@@ -58,26 +71,23 @@ class App extends Component {
     firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password)
       .then(this.setState({ name: '', password: '' }))
       .catch(error => {
+        if (error.code === 'auth/wrong-password') {
+          alert('Wrong password.');
+        } else {
+          alert(error.message);
+        }
+      }
+    )
+  }
 
-        // Handle Errors here.
-        console.log(error.code);
-        console.log(error.message);
-        this.setState({ error: true })
-        // ...
-      })
-
+  onClickAfterSelect = (e) => {
+    e.preventDefault();
   }
 
   onSignOut = () => {
     let signedIn = this.state.signedIn;
     firebase.auth().signOut();
     this.setState({ signedIn: !signedIn });
-  }
-
-  wrongEmailAndPassword = () => {
-    return (
-      <p style={{ color: 'red' }}>Wrong email or password</p>
-    )
   }
 
   render() {
@@ -92,27 +102,27 @@ class App extends Component {
 
 
           <Route path="/register" render={(props) => <Register
-            onChangeMail={this.onChangeMail}
-            onChangePassword={this.onChangePassword}
-            userName={this.state.name}
-            userPassword={this.state.password}
+            onChangeMail={this.onChangeRegisterMail}
+            onChangePassword={this.onChangeRegisterPassword}
+            userName={this.state.registerName}
+            userPassword={this.state.registerPassword}
             handleRegister={this.onRegisterUser} />} />
 
-          <Route path='/login' render={(props) => <Login
-            wrongEmailAndPassword={this.wrongEmailAndPassword}
-            onSignInWithEmailAndPassword={this.onSignInWithEmailAndPassword}
-            onChangeMail={this.onChangeMail}
-            onChangePassword={this.onChangePassword}
-            userName={this.state.name}
-            userPassword={this.state.password}
-            signedIn={this.state.signedIn}
-            firebaseAuth={firebase.auth()}
-            googleAuth={firebase.auth.GoogleAuthProvider.PROVIDER_ID}
-            fbAuth={firebase.auth.FacebookAuthProvider.PROVIDER_ID}
-            gitHubAuth={firebase.auth.GithubAuthProvider.PROVIDER_ID}
-            emailAuth={firebase.auth.EmailAuthProvider.PROVIDER_ID} />} />
+          <Route path='/login' render={(props) => (
+          <Login
+              onSignInWithEmailAndPassword={this.onSignInWithEmailAndPassword}
+              onChangeMail={this.onChangeMail}
+              onChangePassword={this.onChangePassword}
+              userName={this.state.name}
+              userPassword={this.state.password}
+              signedIn={this.state.signedIn}
+              firebaseAuth={firebase.auth()}
+              googleAuth={firebase.auth.GoogleAuthProvider.PROVIDER_ID}
+              fbAuth={firebase.auth.FacebookAuthProvider.PROVIDER_ID}
+              gitHubAuth={firebase.auth.GithubAuthProvider.PROVIDER_ID}
+              emailAuth={firebase.auth.EmailAuthProvider.PROVIDER_ID} />) }/>
 
-          <Route path='/' exact component={Content} />
+          <Route path='/' exact render={(props) => <Content signedIn={this.state.signedIn} />} />
           <Route render={() => <h1>Error 404 page not found</h1>} />
         </Switch>
         <Footer />

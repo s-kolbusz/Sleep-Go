@@ -28,7 +28,7 @@ const login = (props) => {
                     <Form.Control type="email" placeholder="Enter email" value={props.userName} onChange={props.onChangeMail}/>
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
-                    {props.error ? props.wrongEmailAndPassword : null}
+                    {props.error ? "wrong mail or password" : null }
                     </Form.Text>
                 </Form.Group>
 

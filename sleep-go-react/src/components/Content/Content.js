@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import classes from './Content.module.css';
+import {Link} from 'react-router-dom';
 
 const content = (props) => {
     return (
@@ -30,9 +31,10 @@ const content = (props) => {
                         <option>8 osób lub więcej</option>
                     </Form.Control>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Szukaj
-                </Button>
+                {props.signedIn ? 
+                <Button variant="primary" type="submit"> Szukaj </Button>:
+                <Link to='/login'><Button variant="primary" type="submit"> Szukaj </Button></Link>}
+
             </Form>
         </div>
     )
