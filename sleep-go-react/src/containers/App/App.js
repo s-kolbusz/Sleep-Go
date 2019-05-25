@@ -11,6 +11,7 @@ import Content from '../../components/Content/Content';
 import fireBaseAuthConf from '../../components/Firebase/FirebaseAuthConf';
 import './App.css';
 import ObjectFull from '../../containers/ObjectFull/ObjectFull';
+import ObjectAdd from '../ObjectAdd/ObjectAdd';
 
 
 
@@ -77,7 +78,7 @@ class App extends Component {
           alert(error.message);
         }
       }
-    )
+      )
   }
 
   onClickAfterSelect = (e) => {
@@ -100,6 +101,9 @@ class App extends Component {
           <Route path="/objects" render={(props) => <Objects
           />} />
 
+          <Route path="/add" render={(props) => <ObjectAdd
+          />} />
+
 
           <Route path="/register" render={(props) => <Register
             onChangeMail={this.onChangeRegisterMail}
@@ -109,7 +113,7 @@ class App extends Component {
             handleRegister={this.onRegisterUser} />} />
 
           <Route path='/login' render={(props) => (
-          <Login
+            <Login
               onSignInWithEmailAndPassword={this.onSignInWithEmailAndPassword}
               onChangeMail={this.onChangeMail}
               onChangePassword={this.onChangePassword}
@@ -120,7 +124,7 @@ class App extends Component {
               googleAuth={firebase.auth.GoogleAuthProvider.PROVIDER_ID}
               fbAuth={firebase.auth.FacebookAuthProvider.PROVIDER_ID}
               gitHubAuth={firebase.auth.GithubAuthProvider.PROVIDER_ID}
-              emailAuth={firebase.auth.EmailAuthProvider.PROVIDER_ID} />) }/>
+              emailAuth={firebase.auth.EmailAuthProvider.PROVIDER_ID} />)} />
 
           <Route path='/' exact render={(props) => <Content signedIn={this.state.signedIn} />} />
           <Route render={() => <h1>Error 404 page not found</h1>} />

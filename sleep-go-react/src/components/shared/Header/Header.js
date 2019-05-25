@@ -12,6 +12,7 @@ class Header extends PureComponent{
         <Nav className="mr-auto">
             <Link to='/' className='nav-link'>Home</Link>
             <Link to='/objects' className='nav-link'>Objects</Link>
+            <Link to='/add' className='nav-link'>Add object</Link>
             <Link to='/login' className='nav-link'>Login</Link>
             <Link to='/register' className='nav-link'>Register</Link>
         </Nav>
