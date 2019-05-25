@@ -93,7 +93,7 @@ class ObjectAdd extends Component {
 
                     <Form.Group controlId="setDescription">
                         <Form.Label>Opis obiektu</Form.Label>
-                        <Form.Control type="textarea" placeholder="Wprowadź opis swojego obiektu, możliwe jest używanie znaczników HTML np '<h1>Mój obiekt</h1>'" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})}/>
+                        <Form.Control as="textarea" row="4" placeholder="Wprowadź opis swojego obiektu, możliwe jest używanie znaczników HTML np '<h1>Mój obiekt</h1>'" value={this.state.description} onChange={(event) => this.setState({description: event.target.value})}/>
                     </Form.Group>
 
                     <Form.Group controlId="setLatitude">
