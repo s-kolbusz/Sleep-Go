@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import Object from '../../components/Object/Object';
+import Objectt from '../../components/Object/Object';
 import classes from './Objects.module.css';
 
 class Objects extends Component {
@@ -16,11 +16,10 @@ class Objects extends Component {
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
                 const objects = response.data;
+                let objs = null;
                 console.log(typeof objects);
-                const updatedObjects = objects.map(object => {
-                    return {
-                        ...object
-                    }
+                const updatedObjects = Object.keys(objects).map(key => {
+                   return objects[key];
                 });
                 this.setState({ objects: updatedObjects });
                 // console.log( response );
@@ -41,7 +40,7 @@ class Objects extends Component {
             objects = this.state.objects.map(object => {
                 return (
                     <Link to={'/objects/' + object.id} key={object.id}>
-                        <Object
+                        <Objectt
                             name={object.name}
                             city={object.city}
                             phone={object.phone}
