@@ -16,7 +16,6 @@ class Objects extends Component {
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
                 const objects = response.data;
-                let objs = null;
                 console.log(typeof objects);
                 const updatedObjects = Object.keys(objects).map(key => {
                    return objects[key];

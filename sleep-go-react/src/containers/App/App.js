@@ -49,8 +49,8 @@ class App extends Component {
 
   onRegisterUser = (e) => {
     e.preventDefault();
-    firebase.auth().createUserWithEmailAndPassword(this.state.name, this.state.password)
-      .then(this.setState({ name: '', password: '' }))
+    firebase.auth().createUserWithEmailAndPassword(this.state.registerName, this.state.registerPassword)
+      .then(this.setState({ registerName: '', registerPassword: '' }))
       .catch(error => {
         if (error.code === 'auth/weak-password') {
           alert('The password is too weak.');
