@@ -16,6 +16,7 @@ class Objects extends Component {
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
                 const objects = response.data;
+                console.log(typeof objects);
                 const updatedObjects = objects.map(object => {
                     return {
                         ...object
@@ -34,20 +35,20 @@ class Objects extends Component {
         this.setState({ selectedObjectId: id });
     }
 
-    render () {
+    render() {
         let objects = <p style={{ textAlign: 'center' }}>Something went wrong!</p>;
         if (!this.state.error) {
             objects = this.state.objects.map(object => {
                 return (
-                <Link to={'/objects/' + object.id} key={object.id}>
-                    <Object              
-                        name={object.name}
-                        city={object.city}
-                        phone={object.phone}
-                        description={object.description}
-                        match={this.props.match}
-                        clicked={() => this.objectSelectedHandler(object.id)} />
-                </Link>);
+                    <Link to={'/objects/' + object.id} key={object.id}>
+                        <Object
+                            name={object.name}
+                            city={object.city}
+                            phone={object.phone}
+                            description={object.description}
+                            match={this.props.match}
+                            clicked={() => this.objectSelectedHandler(object.id)} />
+                    </Link>);
             });
         }
 
