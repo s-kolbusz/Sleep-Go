@@ -22,7 +22,7 @@ class Objects extends Component {
                    return objects[key];
                 });
                 this.setState({ objects: updatedObjects });
-                // console.log( response );
+                console.log(objects)
             })
             .catch(error => {
                 console.log(error);

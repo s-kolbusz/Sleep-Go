@@ -45,8 +45,24 @@ class ObjectAdd extends Component {
         };
         console.log(object);
         axios.post('https://sleep-go.firebaseio.com/objects.json', object)
-            .then(response => console.log(response))
+            .then(response => {
+                this.setState({
+                    city: '',
+                    city_rw: '',
+                    cost_max: '',
+                    cost_min: '',
+                    description: '',
+                    id: '',
+                    lat: '',
+                    lng: '',
+                    name: '',
+                    phone: '',
+                    postcode: '',
+                    street: ''
+                })
+                console.log(response)})
             .catch(error => console.log(error));
+
     }
 
     render() {
