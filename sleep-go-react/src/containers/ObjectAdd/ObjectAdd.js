@@ -4,7 +4,6 @@ import classes from './ObjectAdd.module.css';
 import { Form, Button } from 'react-bootstrap';
 //import {Link} from 'react-router-dom';
 
-//import classes from './ObjectAdd.module.css';
 
 class ObjectAdd extends Component {
     state = {
