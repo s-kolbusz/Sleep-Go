@@ -42,7 +42,8 @@ class ObjectAdd extends Component {
         });
     }
 
-    objectAddHandler = () => {
+    objectAddHandler = (e) => {
+        e.preventDefault();
         const lastObject = this.state.objects[this.state.objects.length - 1];
         const idValue = lastObject.id + 1;
         const object = {
