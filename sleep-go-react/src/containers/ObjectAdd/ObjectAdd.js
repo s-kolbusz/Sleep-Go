@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import classes from './ObjectAdd.module.css';
 import { Form, Button } from 'react-bootstrap';
 //import {Link} from 'react-router-dom';
 
@@ -67,10 +68,10 @@ class ObjectAdd extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Formularz dodawania obiektu</h1>
+            <div className={classes.CenterForm}>
+                
                 <Form>
-
+                <h1>Formularz dodawania obiektu</h1>
                     <Form.Group controlId="setCity">
                         <Form.Label>Miejscowość - pełna nazwa</Form.Label>
                         <Form.Control type="text" placeholder="Wprowadź nazwę miejscowości" value={this.state.city} onChange={(event) => this.setState({city: event.target.value})}/>
