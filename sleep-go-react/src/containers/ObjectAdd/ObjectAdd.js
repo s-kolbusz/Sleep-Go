@@ -25,6 +25,21 @@ class ObjectAdd extends Component {
 
     componentDidMount() {
         console.log(this.props);
+        axios.get('https://sleep-go.firebaseio.com/objects.json/')
+            .then(response => {
+                const objects = response.data;
+                console.log(objects);
+                const updatedObjects = Object.keys(objects).map(key => {
+                   return objects[key];
+                });
+                this.setState({ objects: updatedObjects });
+                console.log(objects)
+            })
+            .catch(error => {
+                console.log(error);
+                // this.setState({error: true});
+            });
+                
     }
 
     objectAddHandler = (e) => {
@@ -35,7 +50,7 @@ class ObjectAdd extends Component {
             cost_max: this.state.cost_max,
             cost_min: this.state.cost_min,
             description: this.state.description,
-            id: this.state.id,
+            id: this.state.objects.length,
             lat: this.state.lat,
             lng: this.state.lng,
             name: this.state.name,

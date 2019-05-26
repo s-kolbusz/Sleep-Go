@@ -15,12 +15,12 @@ class Objects extends Component {
         console.log(this.props);
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
-                const objects = response.data;
-                console.log(typeof objects);
+                const objects = Object.values(response.data);
+                console.log(objects);
                 const updatedObjects = Object.keys(objects).map(key => {
                    return objects[key];
                 });
-                this.setState({ objects: updatedObjects });
+                this.setState({ objects: objects });
                 console.log(objects)
             })
             .catch(error => {
