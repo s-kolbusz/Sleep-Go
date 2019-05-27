@@ -20,14 +20,14 @@ const login = (props) => {
     return (
     
     <div className={classes.Login} >
-        {props.signedIn ? "you are signed in" :
+        {props.signedIn ? "Zostałeś pomyślnie zalogowany" :
         <React.Fragment>
             <Form>
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>Adres e-mail</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" value={props.userName} onChange={props.onChangeMail}/>
                     <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                    Nigdy nie udostępnimy Twojego hasła na zewnątrz
                     {props.error ? "wrong mail or password" : null }
                     </Form.Text>
                 </Form.Group>
@@ -37,7 +37,7 @@ const login = (props) => {
                     <Form.Control type="password" placeholder="Password" value={props.userPassword} onChange={props.onChangePassword}/>
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={props.onSignInWithEmailAndPassword}>
-                    Submit
+                    Zatwierdź
                 </Button>
             </Form>
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={props.firebaseAuth} /> 

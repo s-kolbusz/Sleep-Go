@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classes from './ObjectAdd.module.css';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 //import Objects from '../Objects/Objects';
 //import {Link} from 'react-router-dom';
 
@@ -30,7 +30,7 @@ class ObjectAdd extends Component {
                 const objects = response.data;
                 console.log(objects);
                 const updatedObjects = Object.keys(objects).map(key => {
-                   return objects[key];
+                    return objects[key];
                 });
                 this.setState({ objects: updatedObjects });
                 console.log(objects)
@@ -39,7 +39,7 @@ class ObjectAdd extends Component {
                 console.log(error);
                 // this.setState({error: true});
             });
-                
+
     }
 
     objectAddHandler = (e) => {
@@ -75,7 +75,8 @@ class ObjectAdd extends Component {
                     postcode: '',
                     street: ''
                 })
-                console.log(response)})
+                console.log(response)
+            })
             .catch(error => console.log(error));
 
     }
@@ -83,67 +84,73 @@ class ObjectAdd extends Component {
     render() {
         return (
             <div className={classes.CenterForm}>
+                <Card style={{ width: '500px' }}>
+                    <Card.Header>Sleep & go</Card.Header>
+                    <Card.Body>
+                        <Card.Title>Formularz dodawania obiektu</Card.Title>
+                        <Form>
+                            <Form.Group controlId="setCity">
+                                <Form.Label>Miejscowość - pełna nazwa</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź nazwę miejscowości" value={this.state.city} onChange={(event) => this.setState({ city: event.target.value })} />
+                            </Form.Group>
 
-                <Form>
-                    <h1>Formularz dodawania obiektu</h1>
-                    <Form.Group controlId="setCity">
-                        <Form.Label>Miejscowość - pełna nazwa</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź nazwę miejscowości" value={this.state.city} onChange={(event) => this.setState({ city: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setCityRw">
+                                <Form.Label>Miejscowość - nazwa bez polskich znaków i spacji</Form.Label>
+                                <Form.Control type="text" placeholder="Miejscowość bez polskich znaków np. 'bialka-tatrzanska'" value={this.state.city_rw} onChange={(event) => this.setState({ city_rw: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setCityRw">
-                        <Form.Label>Miejscowość - nazwa bez polskich znaków i spacji</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź nazwę miejscowości bez polskich znaków np. 'bialka-tatrzanska'" value={this.state.city_rw} onChange={(event) => this.setState({ city_rw: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setCostMax">
+                                <Form.Label>Maksymalna cena za osobę</Form.Label>
+                                <Form.Control type="number" placeholder="Wprowadź maksymalną cenę za osobę" value={this.state.cost_max} onChange={(event) => this.setState({ cost_max: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setCostMax">
-                        <Form.Label>Maksymalna cena za osobę</Form.Label>
-                        <Form.Control type="number" placeholder="Wprowadź maksymalną cenę za osobę" value={this.state.cost_max} onChange={(event) => this.setState({ cost_max: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setCostMin">
+                                <Form.Label>Minimalna cena za osobę</Form.Label>
+                                <Form.Control type="number" placeholder="Wprowadź minimalną cenę za osobę" value={this.state.cost_min} onChange={(event) => this.setState({ cost_min: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setCostMin">
-                        <Form.Label>Minimalna cena za osobę</Form.Label>
-                        <Form.Control type="number" placeholder="Wprowadź minimalną cenę za osobę" value={this.state.cost_min} onChange={(event) => this.setState({ cost_min: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setDescription">
+                                <Form.Label>Opis obiektu</Form.Label>
+                                <Form.Control as="textarea" row="4" placeholder="Wprowadź opis swojego obiektu, możliwe jest używanie znaczników HTML np '<h1>Mój obiekt</h1>'" value={this.state.description} onChange={(event) => this.setState({ description: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setDescription">
-                        <Form.Label>Opis obiektu</Form.Label>
-                        <Form.Control as="textarea" row="4" placeholder="Wprowadź opis swojego obiektu, możliwe jest używanie znaczników HTML np '<h1>Mój obiekt</h1>'" value={this.state.description} onChange={(event) => this.setState({ description: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setLatitude">
+                                <Form.Label>Długość geograficzna obiektu</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź długość geograficzną obiektu np. 41.4211" value={this.state.lat} onChange={(event) => this.setState({ lat: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setLatitude">
-                        <Form.Label>Długość geograficzna obiektu</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź długość geograficzną obiektu np. 41.4211" value={this.state.lat} onChange={(event) => this.setState({ lat: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setLongitude">
+                                <Form.Label>Szerokość geograficzna obiektu</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź szerokość geograficzną obiektu np. 41.4211" value={this.state.lng} onChange={(event) => this.setState({ lng: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setLongitude">
-                        <Form.Label>Szerokość geograficzna obiektu</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź szerokość geograficzną obiektu np. 41.4211" value={this.state.lng} onChange={(event) => this.setState({ lng: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setName">
+                                <Form.Label>Nazwa obiektu</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź nazwę obiektu" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setName">
-                        <Form.Label>Nazwa obiektu</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź nazwę obiektu" value={this.state.name} onChange={(event) => this.setState({ name: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setPhone">
+                                <Form.Label>Numer telefonu</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź numer telefonu" value={this.state.phone} onChange={(event) => this.setState({ phone: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setPhone">
-                        <Form.Label>Numer telefonu</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź numer telefonu" value={this.state.phone} onChange={(event) => this.setState({ phone: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setPostcode">
+                                <Form.Label>Kod pocztowy</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź kod pocztowy w formacie 'XX-XXX'" value={this.state.postcode} onChange={(event) => this.setState({ postcode: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setPostcode">
-                        <Form.Label>Kod pocztowy</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź kod pocztowy w formacie 'XX-XXX'" value={this.state.postcode} onChange={(event) => this.setState({ postcode: event.target.value })} />
-                    </Form.Group>
+                            <Form.Group controlId="setStreet">
+                                <Form.Label>Ulica z numerem</Form.Label>
+                                <Form.Control type="text" placeholder="Wprowadź nazwę ulicy wraz z nr np. 'Kasprowicza 1'" value={this.state.street} onChange={(event) => this.setState({ street: event.target.value })} />
+                            </Form.Group>
 
-                    <Form.Group controlId="setStreet">
-                        <Form.Label>Ulica z numerem</Form.Label>
-                        <Form.Control type="text" placeholder="Wprowadź nazwę ulicy wraz z nr np. 'Kasprowicza 1'" value={this.state.street} onChange={(event) => this.setState({ street: event.target.value })} />
-                    </Form.Group>
+                            <Button variant="primary" type="submit" onClick={this.objectAddHandler}> Dodaj obiekt </Button>
 
-                    <Button variant="primary" type="submit" onClick={this.objectAddHandler}> Dodaj obiekt </Button>
+                        </Form>
+                    </Card.Body>
 
-                </Form>
+                </Card>
+
             </div>
         );
     }

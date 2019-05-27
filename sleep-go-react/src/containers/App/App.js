@@ -53,7 +53,7 @@ class App extends Component {
       .then(this.setState({ registerName: '', registerPassword: '' }))
       .catch(error => {
         if (error.code === 'auth/weak-password') {
-          alert('The password is too weak.');
+          alert('Hasło jest zbyt słabe');
         } else {
           alert(error.message);
         }
@@ -73,7 +73,7 @@ class App extends Component {
       .then(this.setState({ name: '', password: '' }))
       .catch(error => {
         if (error.code === 'auth/wrong-password') {
-          alert('Wrong password.');
+          alert('Złe hasło');
         } else {
           alert(error.message);
         }
@@ -127,7 +127,7 @@ class App extends Component {
               emailAuth={firebase.auth.EmailAuthProvider.PROVIDER_ID} />)} />
 
           <Route path='/' exact render={(props) => <Content signedIn={this.state.signedIn} />} />
-          <Route render={() => <h1>Error 404 page not found</h1>} />
+          <Route render={() => <h1>Błąd 404 nie znaleziony strony</h1>} />
         </Switch>
         <Footer />
       </div>
