@@ -33,35 +33,6 @@ class Objects extends Component {
         this.setState({ selectedObjectId: id });
     }
 
-    /* displayMatchingObjectToCity = (city) => {
-         
-         let objects = <p style={{ textAlign: 'center' }}>Something went wrong!</p>;
-         if (!this.state.error) {
-             objects = this.state.objects;
-             const matchObjects = objects.filter(function(object){
-                 return object.city === city;
-             });
-             matchObjects.map(object => {
-                 return (
-                     <Link to={'/objects/' + object.id} key={object.id}>
-                         <Objectt
-                             name={object.name}
-                             city={object.city}
-                             phone={object.phone}
-                             description={object.description}
-                             match={this.props.match}
-                             clicked={() => this.objectSelectedHandler(object.id)} />
-                     </Link>);
-             });
-         }
- 
-         return (
-             <section className={classes.Objects}>
-                 {objects}
-             </section>
-         );
-     }
-     */
     render() {
         let objects = <p style={{ textAlign: 'center' }}>Coś poszło nie tak!</p>;
         if (!this.state.error) {
