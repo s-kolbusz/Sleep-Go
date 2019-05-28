@@ -1,0 +1,15 @@
+.Object {
+    width: 250px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    margin: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.Object:hover,
+.Object:active {
+    background-color: #C0DDF5;
+}
