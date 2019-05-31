@@ -1,6 +1,4 @@
-<img src="https://s-kolbusz.github.io/Sleep-Go/images/logo.png" style="text-align: center; margin: auto;">
-
-<h1 style="text-align: center;">Sleep&Go</h1>
+<img src="https://github.com/s-kolbusz/Sleep-Go/blob/master/docs/images/logo.png?raw=true" style="text-align: center; margin: auto;">
 
 [Sleep&Go](https://s-kolbusz.github.io/Sleep-Go) to aplikacja umożliwająca wyszukiwanie noclegów w pobliżu określonej lokalizacji
 
@@ -15,4 +13,3 @@
 - [Strona internetowa](https://s-kolbusz.github.io/Sleep-Go/)
 
   
-
