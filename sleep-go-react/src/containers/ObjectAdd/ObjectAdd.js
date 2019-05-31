@@ -7,6 +7,7 @@ import { Form, Button, Card } from 'react-bootstrap';
 
 
 class ObjectAdd extends Component {
+    // Necessary states to add object to database
     state = {
         objects: [],
         city: '',
@@ -23,6 +24,8 @@ class ObjectAdd extends Component {
         street: ''
     }
 
+    // Use of HOC (Higher-Order Components) to get connection with database
+    // Downloading the curent version of objects with axios client
     componentDidMount() {
         console.log(this.props);
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
@@ -42,6 +45,9 @@ class ObjectAdd extends Component {
 
     }
 
+    // Function of adding object to database
+    // Using axios to post object to databse
+    // After sending of data, states are reset
     objectAddHandler = (e) => {
         e.preventDefault();
         const object = {
@@ -84,6 +90,9 @@ class ObjectAdd extends Component {
     render() {
         return (
             <div className={classes.CenterForm}>
+
+                {/*Main form of adding object to database,
+                 clicking submit button calling ObjectAddHandler function*/}
                 <Card style={{ width: '500px' }}>
                     <Card.Header>Sleep & go</Card.Header>
                     <Card.Body>

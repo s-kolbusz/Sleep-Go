@@ -6,6 +6,7 @@ import { Button} from 'react-bootstrap';
 
 import classes from './ObjectFull.css';
 
+// Container necessary to showing full object view
 class ObjectFull extends Component {
     state = {
         loadedObject: null
@@ -15,6 +16,8 @@ class ObjectFull extends Component {
         router: () => true, 
     }
 
+    // Using HOC to check if objects is selected
+    // If true axios client getting appropriate object from database
     componentDidMount() {
         if (this.props.match.params.id) {
             if (!this.state.loadedObject || (this.state.loadedObject && this.state.loadedObject.id !== this.props.id)) {
@@ -28,6 +31,8 @@ class ObjectFull extends Component {
     }
 
     render() {
+        // Conditional showing full object view if there is object in state
+        // Using ReactHtmlParser to transform html markup from description
         let object = <p></p>;
         if (this.props.id) {
             object = <p style={{ textAlign: 'center' }}>Wczytywanie...</p>;

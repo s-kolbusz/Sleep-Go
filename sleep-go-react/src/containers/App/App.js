@@ -97,10 +97,14 @@ class App extends Component {
       <div className="App">
         <Header onSignIn={this.onSignIn} onSignOut={this.onSignOut} signedIn={this.state.signedIn} />
         <Switch>
+
+          {/*Routing to objects component, first one to specific object,
+          second to full list of objects*/}
           <Route path="/objects/:id" exact component={ObjectFull} />
           <Route path="/objects" render={(props) => <Objects
           />} />
 
+          {/*Routing to adding object form*/}
           <Route path="/add" render={(props) => <ObjectAdd
           />} />
 

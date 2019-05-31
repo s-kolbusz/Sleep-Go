@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const content = (props) => {
     return (
         <div>
+            {/*Main form of web app, allow search objects from database*/}
             <Card className={classes.SearchForm}>
                 <Card.Header>Sleep & Go</Card.Header>
                 <Card.Body>

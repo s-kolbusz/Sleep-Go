@@ -3,8 +3,8 @@ import house from '../../assets/house.png';
 import { Button, Card } from 'react-bootstrap';
 
 import classes from './Object.module.css';
-
 const object = (props) => (
+    /*Component of object card, which one is using in objects container*/
     <Card className={classes.Object} >
         <Card.Img variant="top" src={house} alt="house" />
         <Card.Body>

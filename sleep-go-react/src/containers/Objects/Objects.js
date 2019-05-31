@@ -11,6 +11,8 @@ class Objects extends Component {
         objects: []
     }
 
+    // Using HOC to call axios client
+    // Using axios client to download current objects data 
     componentDidMount() {
         console.log(this.props);
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
@@ -33,6 +35,10 @@ class Objects extends Component {
         this.setState({ selectedObjectId: id });
     }
 
+
+    // Using downloaded state of objects,
+    // Using map to get every element of objects
+    // Assigning props from objects data to single object
     render() {
         let objects = <p style={{ textAlign: 'center' }}>Coś poszło nie tak!</p>;
         if (!this.state.error) {
@@ -50,6 +56,8 @@ class Objects extends Component {
             });
         }
 
+
+        // Displaying all objects from database using above variable objects 
         return (
             <section className={classes.Objects}>
                 {objects}
