@@ -6,4 +6,4 @@
 
 Welcome in the mockup location. Here you can find Adobe XD project file of our app, which can you check live by clicking link below.
 
-[Clickable mockup](https://xd.adobe.com/view/a9de0e4f-844e-410f-5650-22e08674ea5f-dfef/)
+[Clickable mockup](https://xd.adobe.com/view/adddfee2-2aa4-41c3-50c4-8b592791fece-dbec/)
