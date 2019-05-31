@@ -7,8 +7,10 @@ class Header extends PureComponent{
     // rendering header with buttons that are rendered conditionally, if we are signed in we we render objects buttons and and button to sign out,if we are signed out we render the login, register and sign in button Nav belongs to react-bootstrap package
     render(){
     return(
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" expand="sm">
         <Link to='/'><Navbar.Brand>SleepGo</Navbar.Brand></Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
             <Link to='/' className='nav-link'>Start</Link>
             {this.props.signedIn ?
@@ -23,20 +25,20 @@ class Header extends PureComponent{
                     <Link to='/register' className='nav-link'>Rejestracja</Link> 
                 </React.Fragment>
                 }
-
-
         </Nav>
         <Form inline>
             {this.props.signedIn ? 
             <Link to='/'>
-                <Button onClick={this.props.onSignOut} variant='outline-light' className="mr-sm-2">Wyloguj się</Button>
+                <Button onClick={this.props.onSignOut} variant='outline-light'>Wyloguj się</Button>
             </Link> : 
             <Link to='/login'>
-                <Button onClick={this.props.onSignIn} variant='light' className="mr-sm-2">Zaloguj się</Button>
+                <Button onClick={this.props.onSignIn} variant='light'>Zaloguj się</Button>
             </Link>}
-            <FormControl type="text" placeholder="Szukaj" className="mr-sm-2" />
-            <Button variant="outline-danger" className="mr-sm-2">Szukaj</Button>
+            <FormControl type="text" placeholder="Szukaj" />
+            <Button variant="outline-danger">Szukaj</Button>
         </Form>
+        </Navbar.Collapse>
+
         </Navbar>
         )
     }
