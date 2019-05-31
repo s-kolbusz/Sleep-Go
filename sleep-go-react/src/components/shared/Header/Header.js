@@ -29,13 +29,13 @@ class Header extends PureComponent{
         <Form inline>
             {this.props.signedIn ? 
             <Link to='/'>
-                <Button onClick={this.props.onSignOut} variant='outline-light'>Wyloguj się</Button>
+                <Button onClick={this.props.onSignOut} variant='outline-light' className='mr-1 my-1'>Wyloguj się</Button>
             </Link> : 
             <Link to='/login'>
-                <Button onClick={this.props.onSignIn} variant='light'>Zaloguj się</Button>
+                <Button onClick={this.props.onSignIn} variant='light' className='mr-1 my-1'>Zaloguj się</Button>
             </Link>}
-            <FormControl type="text" placeholder="Szukaj" />
-            <Button variant="outline-danger">Szukaj</Button>
+            <FormControl type="text" placeholder="Szukaj" className='mr-1 my-1'/>
+            <Button variant="outline-danger" className='mr-1 my-1'>Szukaj</Button>
         </Form>
         </Navbar.Collapse>
 

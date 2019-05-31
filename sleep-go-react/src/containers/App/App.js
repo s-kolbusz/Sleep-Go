@@ -12,6 +12,7 @@ import fireBaseAuthConf from '../../components/Firebase/FirebaseAuthConf';
 import './App.css';
 import ObjectFull from '../../containers/ObjectFull/ObjectFull';
 import ObjectAdd from '../ObjectAdd/ObjectAdd';
+import {Container, Col} from 'react-bootstrap'
 
 
 
@@ -94,7 +95,11 @@ class App extends Component {
 
     return (
       <div className="App">
+                
+        
         <Header onSignIn={this.onSignIn} onSignOut={this.onSignOut} signedIn={this.state.signedIn} />
+        <Col>
+
         <Switch>
 
           {/*Routing to objects component, first one to specific object,
@@ -133,7 +138,9 @@ class App extends Component {
           <Route path='/' exact render={(props) => <Content signedIn={this.state.signedIn} />} />
           <Route render={() => <h1>Błąd 404 nie znaleziony strony</h1>} />
         </Switch>
+        </Col>
         <Footer />
+
       </div>
     );
   }

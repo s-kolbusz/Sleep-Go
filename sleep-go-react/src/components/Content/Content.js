@@ -1,11 +1,11 @@
 import React from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Col } from 'react-bootstrap';
 import classes from './Content.module.css';
 import { Link } from 'react-router-dom';
 
 const content = (props) => {
     return (
-        <div>
+        <Col>
             {/*Main form of web app, allow search objects from database*/}
             <Card className={classes.SearchForm}>
                 <Card.Header>Sleep & Go</Card.Header>
@@ -43,8 +43,7 @@ const content = (props) => {
                 </Card.Body>
 
             </Card>
-
-        </div>
+        </Col>
     )
 };
 export default content;
