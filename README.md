@@ -1,6 +1,18 @@
-# <center>Sleep&Go accommodation base project</center>
+<img src="https://s-kolbusz.github.io/Sleep-Go/images/logo.png" style="text-align: center; margin: auto;">
 
-<p align="center">
-  <img src="https://i.gyazo.com/08f75ee3a4c17a6d66d171e7292905e3.png" alt="UML" />
-</p>
+<h1 style="text-align: center;">Sleep&Go</h1>
+
+[Sleep&Go](https://s-kolbusz.github.io/Sleep-Go) to aplikacja umożliwająca wyszukiwanie noclegów w pobliżu określonej lokalizacji
+
+## Nawigacja:
+
+- [Projekt graficzny - prototyp](https://github.com/s-kolbusz/Sleep-Go/tree/master/01.%20Mockup) 
+
+- [Diagram przypadków użycia](https://github.com/s-kolbusz/Sleep-Go/tree/master/02.%20UML)
+
+- [Kod źródłowy aplikacji](https://github.com/s-kolbusz/Sleep-Go/tree/master/sleep-go-react)
+
+- [Strona internetowa](https://s-kolbusz.github.io/Sleep-Go/)
+
+  
 
