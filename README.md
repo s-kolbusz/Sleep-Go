@@ -8,6 +8,8 @@
 
 - [Diagram przypadków użycia](https://github.com/s-kolbusz/Sleep-Go/tree/master/02.%20UML)
 
+- [Zarządzanie projektem](https://trello.com/b/kMEURSf2/spa)
+
 - [Kod źródłowy aplikacji](https://github.com/s-kolbusz/Sleep-Go/tree/master/sleep-go-react)
 
 - [Strona internetowa](https://s-kolbusz.github.io/Sleep-Go/)
