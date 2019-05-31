@@ -6,6 +6,7 @@ import classes from './Register.module.css';
 
 
 const register = (props) => {
+    // react-boostrap form
     return(
     <React.Fragment>
         <div className={classes.Register}>

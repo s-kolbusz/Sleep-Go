@@ -27,10 +27,12 @@ class App extends Component {
     registerName: '',
     registerPassword: ''
   }
+  // we are checking the state of firebase user evertime we render an element on page
   componentDidMount() {
     this.autListener();
   }
 
+  // handlers that are used for register forms
   onChangeRegisterMail = event => {
     this.setState({ registerName: event.target.value });
   }
@@ -38,7 +40,7 @@ class App extends Component {
   onChangeRegisterPassword = event => {
     this.setState({ registerPassword: event.target.value });
   }
-
+  // handlers that are used for login via form
   onChangeMail = event => {
     this.setState({ name: event.target.value });
   }
@@ -47,6 +49,7 @@ class App extends Component {
     this.setState({ password: event.target.value });
   }
 
+  //handler that is used when we click signing up a new user to our firebase database, we use preventDefault for stopping the page from reloading and cancelling the request do firebase
   onRegisterUser = (e) => {
     e.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(this.state.registerName, this.state.registerPassword)
@@ -60,13 +63,13 @@ class App extends Component {
       })
 
   }
-
+  // listens to current user state in firebase(sign in or sign out) and changes the signedIn property in our react state
   autListener = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ signedIn: !!user });
     });
   }
-
+  //handler that is used when we click signing in, we use preventDefault for stopping the page from reloading and cancelling the request do firebase
   onSignInWithEmailAndPassword = (e) => {
     e.preventDefault();
     firebase.auth().signInWithEmailAndPassword(this.state.name, this.state.password)
@@ -80,11 +83,7 @@ class App extends Component {
       }
       )
   }
-
-  onClickAfterSelect = (e) => {
-    e.preventDefault();
-  }
-
+  //sign out handler
   onSignOut = () => {
     let signedIn = this.state.signedIn;
     firebase.auth().signOut();

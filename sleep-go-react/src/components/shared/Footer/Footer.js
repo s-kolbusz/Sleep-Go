@@ -2,6 +2,8 @@ import React from "react";
 import './Footer.css';
 
 const Footer = () => {
+	// MOCKUP FOOTER
+	// TODO
   return (
     <section id="footer">
 		<div className="container">

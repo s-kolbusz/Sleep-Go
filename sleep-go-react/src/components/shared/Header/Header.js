@@ -4,17 +4,27 @@ import {Link} from 'react-router-dom';
 
 
 class Header extends PureComponent{
-    
+    // rendering header with buttons that are rendered conditionally, if we are signed in we we render objects buttons and and button to sign out,if we are signed out we render the login, register and sign in button Nav belongs to react-bootstrap package
     render(){
     return(
         <Navbar bg="dark" variant="dark">
         <Link to='/'><Navbar.Brand>SleepGo</Navbar.Brand></Link>
         <Nav className="mr-auto">
             <Link to='/' className='nav-link'>Start</Link>
-            <Link to='/objects' className='nav-link'>Obiekty</Link>
-            <Link to='/add' className='nav-link'>Dodaj obiekt</Link>
-            <Link to='/login' className='nav-link'>Logowanie</Link>
-            <Link to='/register' className='nav-link'>Rejestracja</Link>
+            {this.props.signedIn ?
+                <React.Fragment>
+                    <Link to='/objects' className='nav-link'>Obiekty</Link>
+                    <Link to='/add' className='nav-link'>Dodaj obiekt</Link>
+                </React.Fragment>
+
+                :
+                <React.Fragment>
+                    <Link to='/login' className='nav-link'>Logowanie</Link>
+                    <Link to='/register' className='nav-link'>Rejestracja</Link> 
+                </React.Fragment>
+                }
+
+
         </Nav>
         <Form inline>
             {this.props.signedIn ? 
@@ -25,7 +35,7 @@ class Header extends PureComponent{
                 <Button onClick={this.props.onSignIn} variant='light' className="mr-sm-2">Zaloguj się</Button>
             </Link>}
             <FormControl type="text" placeholder="Szukaj" className="mr-sm-2" />
-            <Button variant="outline-danger">Szukaj</Button>
+            <Button variant="outline-danger" className="mr-sm-2">Szukaj</Button>
         </Form>
         </Navbar>
         )

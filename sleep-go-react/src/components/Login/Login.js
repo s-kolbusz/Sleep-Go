@@ -19,13 +19,14 @@ const login = (props) => {
         }
     }
     return (
-    
+    //creating a div, that is a container for another container(react.fragment), we render the form and the styled firebaseUI if we are not signed in otherwise we show a confirmation message, that you are already signed in, Form and all subitems belong to react package react-bootstrap
     <div className={classes.Login} >
         {props.signedIn ? "Zostałeś pomyślnie zalogowany" :
         <React.Fragment>
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Adres e-mail</Form.Label>
+                    {/* we pass here handlers from App.js file, we do this via props of this component */}
                     <Form.Control type="email" placeholder="Enter email" value={props.userName} onChange={props.onChangeMail}/>
                     <Form.Text className="text-muted">
                     Nigdy nie udostępnimy Twojego hasła na zewnątrz
@@ -41,6 +42,7 @@ const login = (props) => {
                     Zatwierdź
                 </Button>
             </Form>
+            {/* we are passing here firebaseUI configuration and firebase.auth() function that is needed for proper StylledFireBaseAuth initialization */}
             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={props.firebaseAuth} /> 
         </React.Fragment>
         }
