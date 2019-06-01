@@ -104,8 +104,7 @@ class App extends Component {
         <Switch>
 
           {/*Routing to map*/}
-          <Route path="/map" render={(props) => <Map
-          />} />
+          <Route path="/map" render={(props) => <Map />} />
 
           {/*Routing to objects component, first one to specific object,
           second to full list of objects*/}
