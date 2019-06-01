@@ -99,8 +99,8 @@ class App extends Component {
 
 
         <Header onSignIn={this.onSignIn} onSignOut={this.onSignOut} signedIn={this.state.signedIn} />
-        <Col>
-
+        <Col className="page-container">
+        <div  className="content-wrap">
         <Switch>
 
           {/*Routing to map*/}
@@ -145,6 +145,7 @@ class App extends Component {
           <Route path='/' exact render={(props) => <Content signedIn={this.state.signedIn} />} />
           <Route render={() => <h1>Błąd 404 nie znaleziony strony</h1>} />
         </Switch>
+        </div>
         </Col>
         <Footer />
 
