@@ -70,8 +70,9 @@ class Map extends Component {
                     lng: o[1].lng
                 });
             });
+            this.setState({ places: newState })
         });
-        this.setState({ places: newState })
+        
     }
 
 
