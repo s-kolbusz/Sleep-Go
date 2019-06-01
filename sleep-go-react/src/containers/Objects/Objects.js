@@ -12,27 +12,20 @@ class Objects extends Component {
     }
 
     // Using HOC to call axios client
-    // Using axios client to download current objects data 
+    // Using axios client to download current objects data
     componentDidMount() {
-        console.log(this.props);
         axios.get('https://sleep-go.firebaseio.com/objects.json/')
             .then(response => {
-                const objects = Object.values(response.data);
-                console.log(objects);
+                const objects = Object.entries(response.data);
                 /* const updatedObjects = Object.keys(objects).map(key => {
                      return objects[key];
                  });*/
                 this.setState({ objects: objects });
-                console.log(objects)
             })
             .catch(error => {
                 console.log(error);
                 // this.setState({error: true});
             });
-    }
-
-    objectSelectedHandler = (id) => {
-        this.setState({ selectedObjectId: id });
     }
 
 
@@ -44,20 +37,19 @@ class Objects extends Component {
         if (!this.state.error) {
             objects = this.state.objects.map(object => {
                 return (
-                    <Link to={'/objects/' + object.id} key={object.id}>
+                    <Link to={'/objects/' + object[0]} key={object[0]}>
                         <Objectt
-                            name={object.name}
-                            city={object.city}
-                            phone={object.phone}
-                            description={object.description}
-                            match={this.props.match}
-                            clicked={() => this.objectSelectedHandler(object.id)} />
+                            name={object[1].name}
+                            city={object[1].city}
+                            phone={object[1].phone}
+                            description={object[1].description}
+                            match={this.props.match} />
                     </Link>);
             });
         }
 
 
-        // Displaying all objects from database using above variable objects 
+        // Displaying all objects from database using above variable objects
         return (
             <section className={classes.Objects}>
                 {objects}

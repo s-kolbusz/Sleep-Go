@@ -13,30 +13,32 @@ class Header extends PureComponent{
         <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
             <Link to='/' className='nav-link'>Start</Link>
+                    <Link to='/map' className='nav-link'>Mapa</Link>
+                    <Link to='/objects' className='nav-link'>Obiekty</Link>
             {this.props.signedIn ?
                 <React.Fragment>
-                    <Link to='/objects' className='nav-link'>Obiekty</Link>
                     <Link to='/add' className='nav-link'>Dodaj obiekt</Link>
                 </React.Fragment>
-
                 :
                 <React.Fragment>
                     <Link to='/login' className='nav-link'>Logowanie</Link>
-                    <Link to='/register' className='nav-link'>Rejestracja</Link> 
+                    <Link to='/register' className='nav-link'>Rejestracja</Link>
                 </React.Fragment>
                 }
         </Nav>
-        <Form inline>
-            {this.props.signedIn ? 
-            <Link to='/'>
-                <Button onClick={this.props.onSignOut} variant='outline-light' className='mr-1 my-1'>Wyloguj się</Button>
-            </Link> : 
-            <Link to='/login'>
-                <Button onClick={this.props.onSignIn} variant='light' className='mr-1 my-1'>Zaloguj się</Button>
-            </Link>}
+        <Form inline className="justify-content-center mx-4">
             <FormControl type="text" placeholder="Szukaj" className='mr-1 my-1'/>
             <Button variant="outline-danger" className='mr-1 my-1'>Szukaj</Button>
         </Form>
+
+        {this.props.signedIn ?
+        <Link to='/'>
+            <Button onClick={this.props.onSignOut} variant='outline-light' className='mr-1 my-1'>Wyloguj się</Button>
+        </Link> :
+        <Link to='/login'>
+            <Button onClick={this.props.onSignIn} variant='light' className='mr-1 my-1'>Zaloguj się</Button>
+        </Link>}
+
         </Navbar.Collapse>
 
         </Navbar>

@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import 'firebase/auth'
 import Register from '../../components/Register/Register';
 import Login from '../../components/Login/Login';
+import Map from '../../containers/Map/Map'
 import Objects from '../../containers/Objects/Objects';
 import { Switch, Route } from 'react-router-dom';
 import Content from '../../components/Content/Content';
@@ -95,12 +96,16 @@ class App extends Component {
 
     return (
       <div className="App">
-                
-        
+
+
         <Header onSignIn={this.onSignIn} onSignOut={this.onSignOut} signedIn={this.state.signedIn} />
         <Col>
 
         <Switch>
+
+          {/*Routing to map*/}
+          <Route path="/map" render={(props) => <Map
+          />} />
 
           {/*Routing to objects component, first one to specific object,
           second to full list of objects*/}
@@ -108,6 +113,9 @@ class App extends Component {
           <Route path="/objects" render={(props) => <Objects
           />} />
 
+          {/*Routing to adding object form*/}
+          <Route path="/add" render={(props) => <ObjectAdd
+          />} />
           {/*Routing to adding object form*/}
           <Route path="/add" render={(props) => <ObjectAdd
           />} />
